@@ -1,0 +1,241 @@
+@import 'https://fonts.googleapis.com/css?family=Open+Sans';
+
+body 
+{
+    font-family: 'Open Sans', sans-serif;
+}
+
+a {
+    color: #1d92ce;
+    text-decoration: none;
+}
+
+.landingpage .row .col-sm-6
+{
+    margin-bottom: 20px;
+    
+}
+ .navbar {
+        margin-bottom: 0;
+        border-radius: 0;
+        font-weight: bold;
+      }
+      /* Add a gray background color and some padding to the footer */
+      
+      footer {
+        background-color: #76b800;
+        padding: 25px;
+      }
+      .landingfooter {
+        background-color: #f2f2f2;
+        padding: 25px;
+      }
+      
+      .carousel-inner img {
+        width: 100%;
+        /* Set width to 100% */
+        margin: auto;
+        min-height: 200px;
+      }
+      
+.breadcrumb {
+    padding: 4px 15px;
+    margin-bottom: 20px;
+    list-style: none;
+    background-color: #ffffff;
+    border-radius: 0px;
+    border-bottom:1px solid #737373; 
+    border-top:1px solid #737373; 
+}
+ .navbar-default {
+    background-color: #ffffff;
+    border-color: #ffffff;
+}     
+      
+.navbar-default .navbar-nav>li>a {
+    color: #00467f;
+}    
+
+
+ .navbar-default .navbar-nav>li>a.piper:after {
+
+content: "|";
+
+
+padding-left: 27px;
+
+}
+
+.nav>li>a {
+    padding: 10px 15px;
+}
+
+.img-circle {
+    border-radius: 50%;
+}
+.pillsHeader 
+{
+    background-color:#ff9f00;
+    padding: 10px 15px;
+    color:#ffffff;
+    font-size:16px;
+    font-weight:bold;
+    
+    
+}
+  
+  .nav nav-pills
+  {
+      background-color:#f7f7f7;
+      
+  }
+  
+  .pageHead 
+  {
+      font-size:24px;
+      color:#00467f;  
+  }
+  
+  
+  
+  .pageSubhead 
+  {
+      margin-bottom:15px;
+      
+  }
+  
+.col-sm-7 a
+{
+    font-weight:bold;
+    color:#1d92ce;
+    line-height: 2em;
+ 
+}
+.panel-default>.panel-heading {
+    background-color: #76b800;
+    border-color: #76b800;
+    color: #ffffff;
+}
+.panel-default>.panel-heading a {
+    background-color: #76b800;
+    border-color: #76b800;
+    color: #ffffff;
+}
+
+
+.table-bordered > tbody > tr > td {
+    border: 1px solid #4EB7E9;
+    padding-left: 2px;
+    padding-top: 0px;
+    padding-bottom: 15px;
+}
+
+thead .theader ,thead .sub-header ,.hire_theader{
+  background-color:#3AB0C8;
+  color:#FFF;
+}
+.table>thead>tr>th{
+    vertical-align:middle;
+}
+.table > thead > tr.hire_theader > th {
+    padding: 35px;
+    text-align: center;
+}
+.plan .theader th {
+    text-align: center;
+    
+    word-break: break-all;
+    width: 9em;
+}  
+.table-bordered .plan {
+    border-color: #3AB0C8;
+}
+
+
+tr.main-header {
+    background-color: #0D74B1;
+    color: #FFF;
+}    
+
+.table>thead>tr.main-header >th {
+     padding-top: 8px; 
+    text-align: center;
+    padding-bottom: 20px; 
+    font-size: 12px;
+ } 
+
+
+ tr.sub-header {
+    text-align: center;
+    font-size: 12px;
+}
+
+.table>thead>tr.sub-header >th {
+     padding-top: 5px; 
+    text-align: center;
+    padding-bottom: 20px; 
+  
+ } 
+td.td-content {
+    text-align: center;
+     
+}
+ul.c-tab_inner li {
+    list-style: disc none inside;
+}
+
+.col-sm-3.panel ul li {
+    border-bottom: 1px solid #CCC;
+}
+.col-left p, h3 {
+    text-align: start;
+}
+.col-sm-6.col-left {
+    padding-top: 15px;
+    background-color: #F5F5F5;
+    padding-bottom: 15px;
+}
+button {
+    border: none !important;
+    background-color: transparent;
+}
+.input-group.modal-search {
+    display: none;
+}
+td.col2 {
+    text-align: center;
+}
+.fa.pull-right {
+        padding-top: 8px;
+}
+ 
+.panel-heading .accordion-toggle:not(.collapsed):before {
+    /* symbol for "opening" panels on page load */
+    font-family: 'FontAwesome';  
+    content: "\f13a";  
+    float: right;        
+    color: #FFF;      
+}
+.panel-heading .accordion-toggle[aria-expanded="true"]:not(.collapsed):before {
+    /* symbol for "opening" panels on first click*/
+    font-family: 'FontAwesome';  
+    content: "\f139";  
+    float: right;        
+    color: #FFF;      
+}
+.panel-heading .accordion-toggle.collapsed:before {
+    /* symbol for "collapsed" panels */
+   content: "\f13a";  
+   font-family: 'FontAwesome';
+     float: right;        
+    color: #FFF; 
+}
+
+      /* Hide the carousel text when the screen is less than 600 pixels wide */
+      
+      @media (max-width: 600px) {
+        .carousel-caption {
+          display: none;
+        }
+
+      }
