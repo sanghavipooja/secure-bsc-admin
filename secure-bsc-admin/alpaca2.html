@@ -1,344 +1,360 @@
 ﻿<!DOCTYPE html>
 <html lang="en">
-
-  <head>
+<head>
     <title>Benefits Connect</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
     <link href="css/custom.css" rel="stylesheet" type="text/css" />
-
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
     <!--<script src="http://www.w3schools.com/lib/w3data.js"></script>-->
     <script src="js/gitana.min.js" type="text/javascript"></script>
- <script type="text/javascript" src="_lib/gitana/gitana.min.js"></script> 
-        <!-- handlebars -->
-        <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.0.0/handlebars.js"></script>
- 
-        <!-- alpaca -->
-        <link type="text/css" href="https://code.cloudcms.com/alpaca/1.5.17/bootstrap/alpaca.min.css" rel="stylesheet" />
-        <script type="text/javascript" src="https://code.cloudcms.com/alpaca/1.5.17/bootstrap/alpaca.min.js"></script>
+    <script type="text/javascript" src="_lib/gitana/gitana.min.js"></script>
+    <!-- handlebars -->
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.0.0/handlebars.js"></script>
+    <!-- alpaca -->
+    <link type="text/css" href="https://code.cloudcms.com/alpaca/1.5.17/bootstrap/alpaca.min.css"
+        rel="stylesheet" />
+    <script type="text/javascript" src="https://code.cloudcms.com/alpaca/1.5.17/bootstrap/alpaca.min.js"></script>
+    <script src="ckeditor/ckeditor.js" type="text/javascript"></script>
+    <style>
+        .alpaca-container-item
+        {
+            background-color: #eeeeee;
+        }
+        .alpaca-field-object
+        {
+            border: 2px solid black;
+        }
+        .alpaca-container-label
+        {
+            background-color: #dddddd;
+        }
+        .alpaca-field-array
+        {
+            background-color: #828282;
+        }
+    </style>
+    <script>
+        var platform;
+        var repository;
+        var branch;
+        var node;
 
-<script src="ckeditor/ckeditor.js" type="text/javascript"></script>
+        var repositoryId = 'e083f23fc5141afe5d22';
+        var branchId = 'fcf1c3fb882fd40ecf97';
+        var nodeId = '5b5019bc3683e8438699'; //counter node
 
-<style>
-.alpaca-container-item
-{
-    background-color:#eeeeee;
-    
-}
-.alpaca-field-object 
-{
-    border:2px solid black;
-    
-}
-.alpaca-container-label 
-{
-    background-color:#dddddd;
-    
-}
-.alpaca-field-array {
+        var schemaSource;
+        var optionsSource;
+        var dataSource;
 
-    background-color: #828282;
-}
-
-
-</style>
-
-
-   <script>
-       var platform;
-       var repository;
-       var branch;
-       var node;
-
-       var repositoryId = 'e083f23fc5141afe5d22';
-       var branchId = 'fcf1c3fb882fd40ecf97';
-       var nodeId = '5b5019bc3683e8438699'; //counter node
-
-       var schemaSource;
-       var optionsSource;
-       var dataSource;
-
-       var pageIdToLoad;
+        var pageIdToLoad;
 
 
-       var config = {
-           //"clientKey": "106d6b42-46e7-4f54-9a52-7ceed8e682b4",
-           //"clientSecret": "It+QMtokAs7f8k5LB3hzgnNGnrR6n99/q3PpxkszdFNIVoU+BD6C7Y68s6S6fNiY2xgkSbBQlCpDJp98AWWPCap2MaNR+F6nk1H44gFAKCA=",
-           "username": "daae953d-a14b-4430-b715-aa72c72915e1",
-           "password": "MsdnSdDxScFjwQKr/Dd/A0qBSAHP/ZpILClCfHmhrunxlscXzylNogjJ20Zz2nPiUbMfR7JT+4CXql3Td4kJUrASeTwT9jpVFYweQ35K2xA=",
-           //"baseURL": "https://api.cloudcms.com",
-           "baseURL": "/proxy"
-           //"application": "aab44469e1c69b575aad"
-       }
+        var config = {
+            //"clientKey": "106d6b42-46e7-4f54-9a52-7ceed8e682b4",
+            //"clientSecret": "It+QMtokAs7f8k5LB3hzgnNGnrR6n99/q3PpxkszdFNIVoU+BD6C7Y68s6S6fNiY2xgkSbBQlCpDJp98AWWPCap2MaNR+F6nk1H44gFAKCA=",
+            "username": "daae953d-a14b-4430-b715-aa72c72915e1",
+            "password": "MsdnSdDxScFjwQKr/Dd/A0qBSAHP/ZpILClCfHmhrunxlscXzylNogjJ20Zz2nPiUbMfR7JT+4CXql3Td4kJUrASeTwT9jpVFYweQ35K2xA=",
+            //"baseURL": "https://api.cloudcms.com",
+            "baseURL": "/proxy"
+            //"application": "aab44469e1c69b575aad"
+        }
 
-       $(document).ready(function () {
+        $(document).ready(function () {
 
-           function getPage(callback) {
+            function getPage(callback) {
 
-               platform = Gitana.connect(config).then(function () {
+                platform = Gitana.connect(config).then(function () {
 
-                   repository = platform.readRepository(repositoryId).then(function () {
+                    repository = platform.readRepository(repositoryId).then(function () {
 
-                       branch = repository.readBranch(branchId).then(function () {
+                        branch = repository.readBranch(branchId).then(function () {
 
-                           node = branch.readNode(pageIdToLoad).then(function () {
-                               callback && callback();
+                            node = branch.readNode(pageIdToLoad).then(function () {
+                                callback && callback();
 
-                           });
-                       });
-                   });
-               });
-           }
-
-           $("#myDropdown").alpaca({
-               "options": {
-                   "label": "What page would you like to edit?",
-                   "type": "select",
-                   "dataSource": { "5c5fb3b173fbb1185b4d": "medical.html" }
-               }
-           });
-
-           $("#myDropdown").change(loadPage);
-
-           function loadPage() {
-               pageIdToLoad = $("#alpaca1").val();
-
-               getPage(showForm);
-           }
+                            });
+                        });
+                    });
+                });
+            }
 
 
-           function showForm() {
-               $("#myform").html("");
-               $("#myform").alpaca({
-                   "view": "bootstrap-edit",
-                   "data": node,
-                   "schema": {
-                       "title": "Edit Page",
-                       "type": "object",
-                       "properties": {
-                           "name": {
-                               "type": "string",
-                               "title": "Page Name"
-                           },
-                           "body": {
-                               "type": "string",
-                               "title": "Main Body"
-                           },
-                           "leftImage": {
-                               "type": "string",
-                               "title": "Left Sidebar Image URL"
-                           },
-                           "links": {
-                               "type": "array",
-                               "title": "Helpful Links",
-                               "maxItems": 6,
-                               "items": {
-                                   "properties": {
-                                       "company": {
-                                           "type": "string",
-                                           "title": "company"
-                                       },
-                                       "number": {
-                                           "type": "string",
-                                           "title": "number"
-                                       },
-                                       "link": {
-                                           "type": "string",
-                                           "title": "link"
-                                       }
-                                   },
-                                   "type": "object"
-                               }
-                           },
-                           "iWantTo": {
-                               "type": "array",
-                               "title": "Accordion Section 1",
-                               "items": {
-                                   "properties": {
-                                       "description": {
-                                           "type": "string",
-                                           "title": "description"
-                                       },
-                                       "link": {
-                                           "type": "string",
-                                           "title": "link"
-                                       }
-                                   },
-                                   "type": "object"
-                               }
-                           },
-                           "iWantTo2": {
-                               "type": "array",
-                               "title": "Accordion Section 2",
-                               "items": {
-                                   "properties": {
-                                       "description": {
-                                           "type": "string",
-                                           "title": "description"
-                                       },
-                                       "link": {
-                                           "type": "string",
-                                           "title": "link"
-                                       }
-                                   },
-                                   "type": "object"
-                               }
-                           }
-                       },
-                       "_parent": "n:node",
-                       "items": {}
-                   },
-                   "options": {
-                       "form": {
-                           "attributes": {
-                               "action": "http://httpbin.org/post",
-                               "method": "post"
-                           },
-                           "buttons": {
-                               "submit": {
-                                   "click": function () {
-                                       var value = this.getValue();
-                                       alert(JSON.stringify(value, null, "  "));
-                                       node.name = "Hough",
+
+
+
+            //---------------------My Dropdown
+
+
+            var myData = {
+            "0fb318d0041cb9bd0a13": "test",
+            "5c5fb3b173fbb1185b4d": "medical",
+            "1797d83ab34843aa7ab9": "medical-hmo",
+            "52bbfd6e6174e9ca77f7": "credit-union",
+            "a652ad09a0a4462255bb": "dental",
+            "0db105fc906afd2a8494": "medical-consumer",
+            "c2417312cad4bf36cce6": "gesop",
+            "abc86af69ab6477794ab": "medical-hsa",
+            "487777503a2025303fec": "medical-wellness",
+            "f2566b4b4bd18f383249": "medical-ppo",
+            "b883c2dca4f15f11019f": "life-accident",
+            "ee95b728317147bb79d6": "employee-asst",
+            "f5be44d832f9e77d6e85": "leave-absence",
+            "b073cb57ee6187722d75": "educational-asst",
+            "614e4f07b7874ccb7a08": "maternity-resources",
+            "b825e1ee2d42b2767c35": "adoption-asst",
+            "e5a18ae298b211790f7e": "workflex",
+            "a80289b42b88610a7651": "voluntary",
+            "4b948eecd3345ced09bc": "vision",
+            "252be9349d6efd0312d4": "new_hires",
+            "4423e1a7828ae0da1ba9": "myResources",
+            "21f5c2a082ab59f6391b": "401k-plan",
+            "67a22456135d7668e21a": "fsa-hsa",
+            "0ff355a9f5e994f836bc": "modern-family",
+
+            }
+
+
+            $("#myDropdown").alpaca({
+                "options": {
+                    "label": "What page would you like to edit?",
+                    "type": "select",
+                    //"dataSource": { "5c5fb3b173fbb1185b4d": "medical.html" }
+                    "dataSource": myData
+                }
+            });
+
+            //---------------------End myDropdown
+
+
+
+
+            $("#myDropdown").change(loadPage);
+
+            function loadPage() {
+                pageIdToLoad = $("#alpaca1").val();
+
+                getPage(showForm);
+            }
+
+
+
+
+
+
+
+
+
+            function showForm() {
+                $("#myform").html("");
+                $("#myform").alpaca({
+                    "view": "bootstrap-edit",
+                    "data": node,
+                    "schema": {
+                        "title": "Edit Page",
+                        "type": "object",
+                        "properties": {
+                            "name": {
+                                "type": "string",
+                                "title": "Page Name"
+                            },
+                            "body": {
+                                "type": "string",
+                                "title": "Main Body"
+                            },
+                            "leftImage": {
+                                "type": "string",
+                                "title": "Left Sidebar Image URL"
+                            },
+                            "links": {
+                                "type": "array",
+                                "title": "Helpful Links",
+                                "maxItems": 6,
+                                "items": {
+                                    "properties": {
+                                        "company": {
+                                            "type": "string",
+                                            "title": "company"
+                                        },
+                                        "number": {
+                                            "type": "string",
+                                            "title": "number"
+                                        },
+                                        "link": {
+                                            "type": "string",
+                                            "title": "link"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            },
+                            "iWantTo": {
+                                "type": "array",
+                                "title": "Accordion Section 1",
+                                "items": {
+                                    "properties": {
+                                        "description": {
+                                            "type": "string",
+                                            "title": "description"
+                                        },
+                                        "link": {
+                                            "type": "string",
+                                            "title": "link"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            },
+                            "iWantTo2": {
+                                "type": "array",
+                                "title": "Accordion Section 2",
+                                "items": {
+                                    "properties": {
+                                        "description": {
+                                            "type": "string",
+                                            "title": "description"
+                                        },
+                                        "link": {
+                                            "type": "string",
+                                            "title": "link"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        },
+                        "_parent": "n:node",
+                        "items": {}
+                    },
+                    "options": {
+                        "form": {
+                            "attributes": {
+                                "action": "http://httpbin.org/post",
+                                "method": "post"
+                            },
+                            "buttons": {
+                                "submit": {
+                                    "click": function () {
+                                        var value = this.getValue();
+                                        alert(JSON.stringify(value, null, "  "));
+                                        node.name = "Hough",
                                  node.update();
-                                   }
-                               }
-                           }
-                       },
-                       "title": "newPageTitle",
-                       "engineId": "alpaca1",
-                       "fields": {
-                           "name": {
-                               "type": "text"
-                           },
-                           "body": {
-                               "type": "ckeditor"
-                           },
-                           "image": {
-                               "type": "text"
-                           },
-                           "links": {
-                               "options": {
-                                   "actionBarType": "right"
-                               }
-                           }
-                       }
-                   }
-               });
+                                    }
+                                }
+                            }
+                        },
+                        "title": "newPageTitle",
+                        "engineId": "alpaca1",
+                        "fields": {
+                            "name": {
+                                "type": "text"
+                            },
+                            "body": {
+                                "type": "ckeditor"
+                            },
+                            "image": {
+                                "type": "text"
+                            },
+                            "links": {
+                                "options": {
+                                    "actionBarType": "right"
+                                }
+                            }
+                        }
+                    }
+                });
 
-           } //alpaca   
-       });
-
-
-
-
-       //This is form upload scripting here--------------------------------------------
-       var pdfContainerId = 'f2585ff41013540945ab';
-       function submitForm() {
-           var formData = new FormData($("#frmeditSubmitForm5")[0]);
-
-           var authorizationHeader = platform.getDriver().getHttpHeaders()["Authorization"];
-           var form = $("#frmeditSubmitForm5");
-
-           $.ajax({
-               type: "POST",
-               url: "https://api.cloudcms.com/repositories/" + repositoryId + "/branches/" + branchId + "/nodes/" + pdfContainerId + "/attachments/" + ($("#uploadFilenameEdit5").val()).replace(" ", "_") + "/",
-               data: formData,
-               contentType: false,
-               processData: false,
-               headers: {
-                   authorization: authorizationHeader
-               }
-           });
-       }
+            } //alpaca   
+        });
 
 
 
 
-       //This ends form upload scripting-----------------------------------------------
- </script>
+        //This is form upload scripting here--------------------------------------------
+        var pdfContainerId = 'f2585ff41013540945ab';
+        function submitForm() {
+            var formData = new FormData($("#frmeditSubmitForm5")[0]);
 
-   <script src="ga/google-analytics.js" type="text/javascript"></script>       
-  </head>
+            var authorizationHeader = platform.getDriver().getHttpHeaders()["Authorization"];
+            var form = $("#frmeditSubmitForm5");
 
-  <body>
+            $.ajax({
+                type: "POST",
+                url: "https://api.cloudcms.com/repositories/" + repositoryId + "/branches/" + branchId + "/nodes/" + pdfContainerId + "/attachments/" + ($("#uploadFilenameEdit5").val()).replace(" ", "_") + "/",
+                data: formData,
+                contentType: false,
+                processData: false,
+                headers: {
+                    authorization: authorizationHeader
+                }
+            });
+        }
 
-   <div class="container-fluid" style="background-color: #00467f; height:91px">
 
-      <div class="container">
-        <div class="row">
-          <div class="col-sm-12">
-            <img src="images/benefitsConnect.png" alt="Image" style="margin-top:33px">
-            <img src="images/bostonScientific.png" style="float:right; margin:20px 50px" />
-          </div>
+
+
+        //This ends form upload scripting-----------------------------------------------
+    </script>
+</head>
+<body>
+    <div class="container-fluid" style="background-color: #00467f; height: 91px">
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-12">
+                    <img src="images/benefitsConnect.png" alt="Image" style="margin-top: 33px">
+                    <img src="images/bostonScientific.png" style="float: right; margin: 20px 50px" />
+                </div>
+            </div>
         </div>
-      </div>
     </div>
-
-   
-
-    
-
-    
     <div class="container landingpage">
-    <!-- tabbed area------------------>
-    <ul class="nav nav-tabs">
-  <li class="active"><a data-toggle="tab" href="#home">Edit Page</a></li>
-  <li><a data-toggle="tab" href="#menu1">Manage PDF's</a></li>
-
-</ul>
-
-<div class="tab-content">
-  <div id="home" class="tab-pane fade in active">
-    <div id="myDropdown"></div>
-    <div id="myform" style="display:block"></div>
-  </div>
-  <div id="menu1" class="tab-pane fade">
-  <!-----------------------------------upload content goes here------------------>
-    <form action="http://httpbin.org/post" method="post" enctype="multipart/form-data"
-        name="frmeditSubmitForm5" id="frmeditSubmitForm5">
-        <div>
-            <label for="myFileUpload5">
-                Upload a pdf file to your repository</label>
-            <input type="file" id="myFileUpload5" name="myFileUpload5">
-            <label>
-                Give a name to your pdf (lowercase, no spaces ex: my_new_pdf)<br>
-                <input type="text" name="uploadFilename5" id="uploadFilenameEdit5">
-            </label>
+        <!-- tabbed area------------------>
+        <ul class="nav nav-tabs">
+            <li class="active"><a data-toggle="tab" href="#home">Edit Page</a></li>
+            <li><a data-toggle="tab" href="#menu1">Manage PDF's</a></li>
+        </ul>
+        <div class="tab-content">
+            <div id="home" class="tab-pane fade in active">
+                <div id="myDropdown">
+                </div>
+                <div id="myform" style="display: block">
+                </div>
+            </div>
+            <div id="menu1" class="tab-pane fade">
+                <!-----------------------------------upload content goes here------------------>
+                <form action="http://httpbin.org/post" method="post" enctype="multipart/form-data"
+                name="frmeditSubmitForm5" id="frmeditSubmitForm5">
+                <div>
+                    <label for="myFileUpload5">
+                        Upload a pdf file to your repository</label>
+                    <input type="file" id="myFileUpload5" name="myFileUpload5">
+                    <label>
+                        Give a name to your pdf (lowercase, no spaces ex: my_new_pdf)<br>
+                        <input type="text" name="uploadFilename5" id="uploadFilenameEdit5">
+                    </label>
+                </div>
+                <div>
+                    <input id="mySubmitButton" name="mySubmit" type="submit" value="Submit">
+                </div>
+                </form>
+                <script>
+                    $("#frmeditSubmitForm5").submit(function (event) {
+                        alert('form submit intervention');
+                        event.preventDefault(); // Prevent the form from submitting via the browser.
+                        submitForm();
+                    });   
+                </script>
+                <!------------------------upload content ends here------------------------>
+            </div>
         </div>
-        <div>
-            <input id="mySubmitButton" name="mySubmit" type="submit" value="Submit">
-        </div>
-        </form>
-
-        <script>
-            $("#frmeditSubmitForm5").submit(function (event) {
-                alert('form submit intervention');
-                event.preventDefault(); // Prevent the form from submitting via the browser.
-                submitForm();
-            });   
-        </script>
-
-        <!------------------------upload content ends here------------------------>
-  </div>
-  
-</div>
-<!---------------------------------------------->
-
+        <!---------------------------------------------->
     </div>
     <br>
-
-
-
-
     <footer class="container-fluid text-center landingfooter">
       <p>Footer Text</p>
     </footer>
-
-  
-  </body>
-
+</body>
 </html>
