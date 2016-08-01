@@ -61,7 +61,7 @@
 
 
         var config = {
-                    //"clientKey": "106d6b42-46e7-4f54-9a52-7ceed8e682b4",
+            //"clientKey": "106d6b42-46e7-4f54-9a52-7ceed8e682b4",
             //"clientSecret": "It+QMtokAs7f8k5LB3hzgnNGnrR6n99/q3PpxkszdFNIVoU+BD6C7Y68s6S6fNiY2xgkSbBQlCpDJp98AWWPCap2MaNR+F6nk1H44gFAKCA=",
             //"username": "daae953d-a14b-4430-b715-aa72c72915e1",
             //"password": "MsdnSdDxScFjwQKr/Dd/A0qBSAHP/ZpILClCfHmhrunxlscXzylNogjJ20Zz2nPiUbMfR7JT+4CXql3Td4kJUrASeTwT9jpVFYweQ35K2xA=",
@@ -102,30 +102,30 @@
 
 
             var myData = {
-            "0fb318d0041cb9bd0a13": "test",
-            "5c5fb3b173fbb1185b4d": "medical",
-            "1797d83ab34843aa7ab9": "medical-hmo",
-            "52bbfd6e6174e9ca77f7": "credit-union",
-            "a652ad09a0a4462255bb": "dental",
-            "0db105fc906afd2a8494": "medical-consumer",
-            "c2417312cad4bf36cce6": "gesop",
-            "abc86af69ab6477794ab": "medical-hsa",
-            "487777503a2025303fec": "medical-wellness",
-            "f2566b4b4bd18f383249": "medical-ppo",
-            "b883c2dca4f15f11019f": "life-accident",
-            "ee95b728317147bb79d6": "employee-asst",
-            "f5be44d832f9e77d6e85": "leave-absence",
-            "b073cb57ee6187722d75": "educational-asst",
-            "614e4f07b7874ccb7a08": "maternity-resources",
-            "b825e1ee2d42b2767c35": "adoption-asst",
-            "e5a18ae298b211790f7e": "workflex",
-            "a80289b42b88610a7651": "voluntary",
-            "4b948eecd3345ced09bc": "vision",
-            "252be9349d6efd0312d4": "new_hires",
-            "4423e1a7828ae0da1ba9": "myResources",
-            "21f5c2a082ab59f6391b": "401k-plan",
-            "67a22456135d7668e21a": "fsa-hsa",
-            "0ff355a9f5e994f836bc": "modern-family",
+                "0fb318d0041cb9bd0a13": "test",
+                "5c5fb3b173fbb1185b4d": "medical",
+                "1797d83ab34843aa7ab9": "medical-hmo",
+                "52bbfd6e6174e9ca77f7": "credit-union",
+                "a652ad09a0a4462255bb": "dental",
+                "0db105fc906afd2a8494": "medical-consumer",
+                "c2417312cad4bf36cce6": "gesop",
+                "abc86af69ab6477794ab": "medical-hsa",
+                "487777503a2025303fec": "medical-wellness",
+                "f2566b4b4bd18f383249": "medical-ppo",
+                "b883c2dca4f15f11019f": "life-accident",
+                "ee95b728317147bb79d6": "employee-asst",
+                "f5be44d832f9e77d6e85": "leave-absence",
+                "b073cb57ee6187722d75": "educational-asst",
+                "614e4f07b7874ccb7a08": "maternity-resources",
+                "b825e1ee2d42b2767c35": "adoption-asst",
+                "e5a18ae298b211790f7e": "workflex",
+                "a80289b42b88610a7651": "voluntary",
+                "4b948eecd3345ced09bc": "vision",
+                "252be9349d6efd0312d4": "new_hires",
+                "4423e1a7828ae0da1ba9": "myResources",
+                "21f5c2a082ab59f6391b": "401k-plan",
+                "67a22456135d7668e21a": "fsa-hsa",
+                "0ff355a9f5e994f836bc": "modern-family"
 
             }
 
@@ -252,8 +252,21 @@
                                     "click": function () {
                                         var value = this.getValue();
                                         alert(JSON.stringify(value, null, "  "));
-                                        node.name = "Hough",
-                                 node.update();
+                                        node.name = value.name;
+                                        node.heading = value.heading;
+                                        node.body = value.body;
+                                        node.leftImage = value.leftImage;
+                                        node.links = value.links;
+                                        node.accordionSection1Header = value.accordionSection1Header;
+                                        node.iWantTo = value.iWantTo;
+                                        node.accordionSection2Header = value.accordionSection2Header;
+                                        node.iWantTo2 = value.iWantTo2;
+
+                                        
+                                        //node.links[0].company = "New Delta Dental Company";
+                                        node.update();
+
+
                                     }
                                 }
                             }
