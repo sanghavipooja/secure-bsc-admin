@@ -61,7 +61,16 @@
 
             function getPage(callback) {
 
-                Gitana.connect(config).then(function () {
+                Gitana.connect(config,function(err){
+			if (err) {
+				console.log("Error: " + err + window.location.href);
+				
+				//$("#lblLoginLable").html("Username or password are incorrect. Please try again.");
+				//$( "#dialog" ).dialog( "open" );
+				return;
+
+			}
+			}).then(function() { 
 
                     this.readRepository(repositoryId).then(function () {
 
