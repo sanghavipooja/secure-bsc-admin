@@ -6,7 +6,7 @@
         console.log("Welcome again " + user);
         username = user;
         password = pswd;
-        begin();
+        loadPage();
     } else {
         $("#loginContainer").append('<div id="dialog" title="Please Log In."><label>Username:</label><input id="txtUsername" name="txtUsername" type="text"><label>Password:</label><input id="txtPassword" name="txtPassword" type="password"><input id="submitButton" onclick="setCredentialsFromLogin()" name="Submit" type="button" value="Submit"><label id="lblLoginLable"></label></div>');
         $("#dialog").dialog({
@@ -34,4 +34,9 @@ function getCookie(cname) {
         if (c.indexOf(name) == 0) return c.substring(name.length, c.length);
     }
     return "";
+}
+function setCredentialsFromLogin() {
+    username = $("#txtUsername").val();
+    password = $("#txtPassword").val();
+    getPage();
 }
