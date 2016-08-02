@@ -8,14 +8,10 @@
     <link href="css/custom.css" rel="stylesheet" type="text/css" />
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
-    <!--<script src="http://www.w3schools.com/lib/w3data.js"></script>-->
     <script src="js/gitana.min.js" type="text/javascript"></script>
     <!--<script type="text/javascript" src="_lib/gitana/gitana.min.js"></script>-->
-    <!-- handlebars -->
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.0.0/handlebars.js"></script>
-    <!-- alpaca -->
-    <link type="text/css" href="https://code.cloudcms.com/alpaca/1.5.17/bootstrap/alpaca.min.css"
-        rel="stylesheet" />
+    <link type="text/css" href="https://code.cloudcms.com/alpaca/1.5.17/bootstrap/alpaca.min.css" rel="stylesheet" />
     <script type="text/javascript" src="https://code.cloudcms.com/alpaca/1.5.17/bootstrap/alpaca.min.js"></script>
     <script src="ckeditor/ckeditor.js" type="text/javascript"></script>
     <style>
@@ -65,13 +61,13 @@
 
             function getPage(callback) {
 
-                platform = Gitana.connect(config).then(function () {
+                Gitana.connect(config).then(function () {
 
-                    repository = platform.readRepository(repositoryId).then(function () {
+                    this.readRepository(repositoryId).then(function () {
 
-                        branch = repository.readBranch(branchId).then(function () {
+                        this.readBranch(branchId).then(function () {
 
-                            node = branch.readNode(pageIdToLoad).then(function () {
+                            node = this.readNode(pageIdToLoad).then(function () {
                                 callback && callback();
 
                             });
@@ -107,7 +103,6 @@
                 "0ff355a9f5e994f836bc": "modern-family"
             }
 
-
             $("#myDropdown").alpaca({
                 "options": {
                     "label": "What page would you like to edit?",
@@ -116,8 +111,6 @@
                     "dataSource": myData
                 }
             });
-
-
 
             $("#myDropdown").change(loadPage);
 
@@ -257,9 +250,6 @@
             } //alpaca   
         });
 
-
-
-
         //This is form upload scripting here--------------------------------------------
         var pdfContainerId = 'f2585ff41013540945ab';
         function submitForm() {
@@ -294,7 +284,13 @@
             </div>
         </div>
     </div>
-    <div class="container landingpage">
+
+
+    <div>
+    Signon
+    </div>
+
+    <div class="container landingpage" style="display:none">
         <!-- tabbed area------------------>
         <ul class="nav nav-tabs">
             <li class="active"><a data-toggle="tab" href="#home">Edit Page</a></li>
@@ -319,6 +315,7 @@
                         user friendly name. It should be lowercase, no spaces. then click 'Submit to upload
                         your resource to the library.
                     </label>
+                    <br />
                     <input type="file" id="myFileUpload5" name="myFileUpload5">
                     <br />
                     <label>
@@ -332,7 +329,7 @@
                 </form>
                 <script>
                     $("#frmeditSubmitForm5").submit(function (event) {
-                        alert('form submit intervention');
+                        alert('Resource Uploaded');
                         event.preventDefault(); // Prevent the form from submitting via the browser.
                         submitForm();
                     });   
@@ -340,11 +337,14 @@
                 <!------------------------upload content ends here------------------------>
             </div>
         </div>
-        <!---------------------------------------------->
     </div>
+
+
+
+
     <br>
     <footer class="container-fluid text-center landingfooter">
-      <p>Footer Text</p>
+      <p>Aon</p>
     </footer>
 </body>
 </html>
