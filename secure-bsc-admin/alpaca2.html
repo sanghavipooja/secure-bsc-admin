@@ -228,8 +228,9 @@
         $("#myDropdown").change(loadPage);
 
         function loadPage() {
-            //pageIdToLoad = "21f5c2a082ab59f6391b" || $("#alpaca1").val() ;
+            
             pageIdToLoad = $("#alpaca1").val() || "21f5c2a082ab59f6391b";
+            //pageIdToLoad = $("#alpaca1").val();
             getPage(showForm);
         }
 
