@@ -72,8 +72,8 @@
                     <label for="myFileUpload5">
                         You may use this form to upload resources (pdf's, images) to your document library.
                         Select the resource by clicking on the 'Choose File' Button. Give the resource a
-                        user friendly name. It should be lowercase, no spaces. then click 'Submit to upload
-                        your resource to the library.
+                        user friendly name. It should be lowercase with no spaces. Then click 'Submit to upload
+                        your resource to the library. Refer to the resource in the page editor by using this template: [Template goes here]
                     </label>
                     <br />
                     <input type="file" id="myFileUpload5" name="myFileUpload5">
@@ -323,7 +323,7 @@
                                     node.iWantTo = value.iWantTo;
                                     node.accordionSection2Header = value.accordionSection2Header;
                                     node.iWantTo2 = value.iWantTo2;
-                                    node.update();
+                                    node.update().then(function(){alert("Form Submitted")});
                                 }
                             }
                         }
