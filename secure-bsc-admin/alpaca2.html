@@ -281,8 +281,17 @@
 
         //This ends form upload scripting-----------------------------------------------
     </script>
+
+
+
+
+    <link href="css/jquery-ui.css" rel="stylesheet" type="text/css" />
+    <script src="js/jquery-ui.min.js" type="text/javascript"></script>
+    <script src="js/login.js" type="text/javascript"></script>
+
+
 </head>
-<body>
+<body onload="checkCookie()">
     <div class="container-fluid" style="background-color: #00467f; height: 91px">
         <div class="container">
             <div class="row">
@@ -293,6 +302,9 @@
             </div>
         </div>
     </div>
+
+
+    <div id="loginContainer"> </div>
 
 
     <div class="container landingpage">
