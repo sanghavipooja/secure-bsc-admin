@@ -31,6 +31,7 @@ CKEDITOR.editorConfig = function( config ) {
 
 	// Dialog windows are also simplified.
 	config.removeDialogTabs = 'link:advanced';
-	config.contentsCss = ['/secure-bsc-admin/ckeditor/bootstrap.css', '/secure-bsc-admin/css/custom.css'];
+	//config.contentsCss = ['/secure-bsc-admin/ckeditor/bootstrap.css', '/secure-bsc-admin/css/custom.css'];
+	config.contentsCss = ['/ckeditor/bootstrap.css', '/css/custom.css'];
     
 };
