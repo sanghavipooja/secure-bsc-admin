@@ -70,16 +70,16 @@
                 <div>
                     <br />
                     <label for="myFileUpload5">
-                        You may use this form to upload resources (pdf's, images) to your document library.
-                        Select the resource by clicking on the 'Choose File' Button. Give the resource a
+                        You may use this form to upload pdf (Adobe Acrobat) resources to your document library.
+                        Select the pdf by clicking on the 'Choose File' Button. Give the pdf a
                         user friendly name. It should be lowercase with no spaces. Then click 'Submit to upload
-                        your resource to the library. Refer to the resource in the page editor by using this template: [Template goes here]
+                        your pdf file to the library. 
                     </label>
                     <br />
                     <input type="file" id="myFileUpload5" name="myFileUpload5">
                     <br />
                     <label>
-                        Give a name to your pdf (lowercase, no spaces ex: my_new_pdf)<br>
+                        Give a name to your pdf (lowercase, no spaces ex: my_new_pdf). Refer to the pdf in the page editor by using this template: [Template goes here]<br>
                         <input type="text" name="uploadFilename5" id="uploadFilenameEdit5">
                     </label>
                 </div>
@@ -133,20 +133,12 @@
 
         function getPage(callback) {
 
-//            var config = {
-//            "username": username,
-//            "password": password,
-//            "baseURL": "/proxy"
-//                    }
-
-        var config = {
-            "clientKey": "106d6b42-46e7-4f54-9a52-7ceed8e682b4",
-            "clientSecret": "It+QMtokAs7f8k5LB3hzgnNGnrR6n99/q3PpxkszdFNIVoU+BD6C7Y68s6S6fNiY2xgkSbBQlCpDJp98AWWPCap2MaNR+F6nk1H44gFAKCA=",
+            var config = {
             "username": username,
             "password": password,
-            "baseURL": "https://api.cloudcms.com",
-            "application": "aab44469e1c69b575aad"
-        }
+            "baseURL": "/proxy"
+                    }
+
 
 
             $("#dialog").dialog("close");
