@@ -154,9 +154,10 @@
             platform = Gitana.connect(config, function (err) {
                 if (err) {
                     console.log("Error: " + err + window.location.href);
+                    //$("#loading-image").css('display', 'none');
 
-                    //$("#lblLoginLable").html("Username or password are incorrect. Please try again.");
-                    //$( "#dialog" ).dialog( "open" );
+                    $("#lblLoginLable").html("Username or password are incorrect. Please try again.");
+                    $("#dialog").dialog("open");
                     return;
 
                 }
