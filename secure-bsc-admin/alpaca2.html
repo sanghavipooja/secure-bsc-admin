@@ -32,6 +32,12 @@
         {
             background-color: #828282;
         }
+        
+        #logout 
+        {
+            color:Blue;
+            
+        }
     </style>
     
     <link href="css/jquery-ui.css" rel="stylesheet" type="text/css" />
@@ -44,10 +50,15 @@
                 <div class="col-sm-12">
                     <img src="images/benefitsConnect.png" alt="Image" style="margin-top: 33px">
                     <img src="images/bostonScientific.png" style="float: right; margin: 20px 50px" />
+                    
                 </div>
             </div>
         </div>
     </div>
+
+    <p id = "logout" onclick="logout()">logout</p>
+
+
     <div id="loginContainer">
     </div>
     <div class="container landingpage">
@@ -76,7 +87,7 @@
                         your pdf file to the library. 
                     </label>
                     <br />
-                    <input type="file" id="myFileUpload5" name="myFileUpload5">
+                    <input type="file" id="myFileUpload5" accept="application/pdf" name="myFileUpload5">
                     <br />
                     <label>
                         Give a name to your pdf (lowercase, no spaces ex: my_new_pdf). Refer to the pdf in the page editor by using this template: [Template goes here]<br>
@@ -165,14 +176,17 @@
                 document.cookie = "username=" + username;
                 document.cookie = "password=" + password;
 
-                this.readRepository(repositoryId).then(function () {
+                repository = this.readRepository(repositoryId).then(function () {
 
-                    this.readBranch(branchId).then(function () {
+                    branch = this.readBranch(branchId).then(function () {
+                    /*
+                            node = this.readNode(pageIdToLoad).then(function () {
+                                callback && callback();
 
-                        node = this.readNode(pageIdToLoad).then(function () {
-                            callback && callback();
+                            });
+                        
+*/
 
-                        });
                     });
                 });
             });
@@ -219,9 +233,17 @@
         function loadPage() {
             
             pageIdToLoad = $("#alpaca1").val() || "21f5c2a082ab59f6391b";
-            //pageIdToLoad = $("#alpaca1").val();
-            getPage(showForm);
+            //getPage(showForm);
+            reShowForm();
         }
+
+        function reShowForm() {
+
+            node = branch.readNode(pageIdToLoad).then(function () {
+                showForm();
+            });
+        }
+
 
         function showForm() {
             $("#myform").html("");
@@ -421,16 +443,11 @@
 
 
 
-        $("#myDropdown").alpaca({
-            "options": {
-                "label": "What page would you like to edit?",
-                "type": "select",
-                //"dataSource": { "5c5fb3b173fbb1185b4d": "medical.html" }
-                "dataSource": myData
-            }
-        });
-    
-    
+        function logout() {
+            alert("logged out");
+           Gitana.deleteCookie('GITANA_TICKET', '/')
+        }
+
     </script>
 </body>
 </html>
