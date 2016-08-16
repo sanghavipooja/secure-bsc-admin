@@ -36,11 +36,12 @@ CKEDITOR.editorConfig = function (config) {
     // Simplify the dialog windows.
     config.removeDialogTabs = 'image:advanced;link:advanced';
 
-    //config.contentsCss = 'http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css';
-    //config.contentsCss = 'ckeditor/bootstrap.css';
+
+    //local version:
+    //config.contentsCss = ['/secure-bsc-admin/ckeditor/bootstrap.css', '/secure-bsc-admin/css/custom.css'];
+
+    //CloudCMS hosted version:
     config.contentsCss = ['/ckeditor/bootstrap.css', '/css/custom.css'];
-    //config.contentsCss = '/secure.bscbenefitsconnect.com/css/custom.css';
-    //config.stylesSet = [];
 
 
     config.height = '600px';
