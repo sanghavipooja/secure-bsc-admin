@@ -38,7 +38,7 @@ CKEDITOR.editorConfig = function (config) {
 
     //config.contentsCss = 'http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css';
     //config.contentsCss = 'ckeditor/bootstrap.css';
-    config.contentsCss = ['/secure-bsc-admin/ckeditor/bootstrap.css', '/secure-bsc-admin/css/custom.css'];
+    config.contentsCss = ['/ckeditor/bootstrap.css', '/css/custom.css'];
     //config.contentsCss = '/secure.bscbenefitsconnect.com/css/custom.css';
     //config.stylesSet = [];
 
