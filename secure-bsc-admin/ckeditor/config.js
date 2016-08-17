@@ -31,7 +31,12 @@ CKEDITOR.editorConfig = function( config ) {
 
 	// Dialog windows are also simplified.
 	config.removeDialogTabs = 'link:advanced';
+
+	//local version:
 	//config.contentsCss = ['/secure-bsc-admin/ckeditor/bootstrap.css', '/secure-bsc-admin/css/custom.css'];
+
+	//CloudCMS hosted version:
 	config.contentsCss = ['/ckeditor/bootstrap.css', '/css/custom.css'];
+
     
 };

@@ -193,7 +193,7 @@
         }
 
         var myData = {
-            "0fb318d0041cb9bd0a13": "test",
+            /*"0fb318d0041cb9bd0a13": "test",*/
             "5c5fb3b173fbb1185b4d": "medical",
             "1797d83ab34843aa7ab9": "medical-hmo",
             "52bbfd6e6174e9ca77f7": "credit-union",
@@ -212,11 +212,11 @@
             "e5a18ae298b211790f7e": "workflex",
             "a80289b42b88610a7651": "voluntary",
             "4b948eecd3345ced09bc": "vision",
-            "252be9349d6efd0312d4": "new_hires",
-            "4423e1a7828ae0da1ba9": "myResources",
+            /*"252be9349d6efd0312d4": "new_hires",*/
+            /*"4423e1a7828ae0da1ba9": "myResources",*/
             "21f5c2a082ab59f6391b": "401k-plan",
             "67a22456135d7668e21a": "fsa-hsa",
-            "0ff355a9f5e994f836bc": "modern-family"
+            /*"0ff355a9f5e994f836bc": "modern-family"*/
         }
 
         $("#myDropdown").alpaca({
@@ -299,7 +299,18 @@
                                     "link": {
                                         "type": "string",
                                         "title": "link"
-                                    }
+                                    },
+                                    "bullets": {
+                        "items": {
+                            "type": "string",
+                            "title": "bulletItem"
+                        },
+                        "type": "array",
+                        "title": "bullets"
+                    }
+
+
+
                                 },
                                 "type": "object"
                             }
