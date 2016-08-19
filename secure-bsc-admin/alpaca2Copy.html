@@ -410,6 +410,20 @@
 
 
         function checkCookie() {
+
+        if(performance.navigation.type  == 1 )
+          {
+            alert('page reloaded');
+            Gitana.deleteCookie("password","/secure-bsc-admin");
+            Gitana.deleteCookie("username","/secure-bsc-admin");
+            Gitana.deleteCookie("password","/localhost");
+            Gitana.deleteCookie("username","/localhost");
+
+          }
+
+
+
+
             console.log('checking cookies');
             var user = getCookie("username");
             var pswd = getCookie("password");
@@ -457,6 +471,8 @@
         function logout() {
             Gitana.deleteCookie("password","/secure-bsc-admin");
             Gitana.deleteCookie("username","/secure-bsc-admin");
+            Gitana.deleteCookie("password","/localhost");
+            Gitana.deleteCookie("username","/localhost");
             platform.logout();
             open("alpaca2Copy.html","_self");
         }
