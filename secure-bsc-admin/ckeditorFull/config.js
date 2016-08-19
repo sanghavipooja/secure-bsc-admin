@@ -37,11 +37,21 @@ CKEDITOR.editorConfig = function (config) {
     config.removeDialogTabs = 'image:advanced;link:advanced';
 
 
+    var environmentString = location.hostname;
+    debugger;
+    if (environmentString == "f2472b6e-e1f1-4c52-9eed-f7797ff8e908-hosted.cloudcms.net") {
+        config.contentsCss = ['/ckeditor/bootstrap.css', '/css/custom.css'];
+    } else {
+        config.contentsCss = ['/secure-bsc-admin/ckeditor/bootstrap.css', '/secure-bsc-admin/css/custom.css'];
+
+    }
+
+
     //local version:
     //config.contentsCss = ['/secure-bsc-admin/ckeditor/bootstrap.css', '/secure-bsc-admin/css/custom.css'];
 
     //CloudCMS hosted version:
-    config.contentsCss = ['/ckeditor/bootstrap.css', '/css/custom.css'];
+    //config.contentsCss = ['/ckeditor/bootstrap.css', '/css/custom.css'];
 
 
     config.height = '600px';
