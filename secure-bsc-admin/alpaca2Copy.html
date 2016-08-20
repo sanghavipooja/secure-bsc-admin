@@ -144,25 +144,25 @@
 
         function getPage(callback) {
 
-//            var config = {
-//            "username": username,
-//            "password": password,
-//            "baseURL": "/proxy"
-//                    }
-
-        var config = {
-            "clientKey": "106d6b42-46e7-4f54-9a52-7ceed8e682b4",
-            "clientSecret": "It+QMtokAs7f8k5LB3hzgnNGnrR6n99/q3PpxkszdFNIVoU+BD6C7Y68s6S6fNiY2xgkSbBQlCpDJp98AWWPCap2MaNR+F6nk1H44gFAKCA=",
+            var config = {
             "username": username,
             "password": password,
-            "baseURL": "https://api.cloudcms.com",
-            "application": "aab44469e1c69b575aad"
-        }
+            "baseURL": "/proxy"
+                    }
+
+//        var config = {
+//            "clientKey": "106d6b42-46e7-4f54-9a52-7ceed8e682b4",
+//            "clientSecret": "It+QMtokAs7f8k5LB3hzgnNGnrR6n99/q3PpxkszdFNIVoU+BD6C7Y68s6S6fNiY2xgkSbBQlCpDJp98AWWPCap2MaNR+F6nk1H44gFAKCA=",
+//            "username": username,
+//            "password": password,
+//            "baseURL": "https://api.cloudcms.com",
+//            "application": "aab44469e1c69b575aad"
+//        }
        
 
             $("#dialog").dialog("close");
 
-            platform = Gitana.connect(config, function (err) {
+            Gitana.connect(config, function (err) {
                 if (err) {
                     console.log("Error: " + err + window.location.href);
                     //$("#loading-image").css('display', 'none');
@@ -173,19 +173,23 @@
 
                 }
             }).then(function () {
+            platform = this;
                 document.cookie = "username=" + username;
                 document.cookie = "password=" + password;
 
-                repository = this.readRepository(repositoryId).then(function () {
+                this.readRepository(repositoryId).then(function () {
+                repository = this;
 
-                    branch = this.readBranch(branchId).then(function () {
+
+                    this.readBranch(branchId).then(function () {
+                    branch = this;
                     /*
                             node = this.readNode(pageIdToLoad).then(function () {
                                 callback && callback();
 
                             });
                         
-*/
+                        */
 
                     });
                 });
