@@ -32,11 +32,13 @@ CKEDITOR.editorConfig = function( config ) {
 	// Dialog windows are also simplified.
 	config.removeDialogTabs = 'link:advanced';
 
-	//local version:
-	//config.contentsCss = ['/secure-bsc-admin/ckeditor/bootstrap.css', '/secure-bsc-admin/css/custom.css'];
+	var environmentString = location.hostname;
+	if (environmentString == "f2472b6e-e1f1-4c52-9eed-f7797ff8e908-hosted.cloudcms.net") {
+	    config.contentsCss = ['/ckeditor/bootstrap.css', '/css/custom.css'];
+	} else {
+	    config.contentsCss = ['/secure-bsc-admin/ckeditor/bootstrap.css', '/secure-bsc-admin/css/custom.css'];
 
-	//CloudCMS hosted version:
-	config.contentsCss = ['/ckeditor/bootstrap.css', '/css/custom.css'];
+	}
 
     
 };

@@ -38,7 +38,6 @@ CKEDITOR.editorConfig = function (config) {
 
 
     var environmentString = location.hostname;
-    debugger;
     if (environmentString == "f2472b6e-e1f1-4c52-9eed-f7797ff8e908-hosted.cloudcms.net") {
         config.contentsCss = ['/ckeditor/bootstrap.css', '/css/custom.css'];
     } else {
