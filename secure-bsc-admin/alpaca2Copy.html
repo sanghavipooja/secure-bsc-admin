@@ -14,7 +14,7 @@
     <link type="text/css" href="https://code.cloudcms.com/alpaca/1.5.17/bootstrap/alpaca.min.css"
         rel="stylesheet" />
     <script type="text/javascript" src="https://code.cloudcms.com/alpaca/1.5.17/bootstrap/alpaca.min.js"></script>
-    <script src="ckeditor/ckeditor.js" type="text/javascript"></script>
+    <script src="ckeditorFull/ckeditor.js" type="text/javascript"></script>
     <style>
         .alpaca-container-item
         {
@@ -33,14 +33,16 @@
             background-color: #828282;
         }
         
-        #logout
+        #logout 
         {
-            color: Blue;
+            color:Blue;
+            
         }
     </style>
+    
     <link href="css/jquery-ui.css" rel="stylesheet" type="text/css" />
     <script src="js/jquery-ui.min.js" type="text/javascript"></script>
-    <!-- clickjacking script-->
+        <!-- clickjacking script-->
     <style>
         html
         {
@@ -64,19 +66,15 @@
                 <div class="col-sm-12">
                     <img src="images/benefitsConnect.png" alt="Image" style="margin-top: 33px">
                     <img src="images/bostonScientific.png" style="float: right; margin: 20px 50px" />
+                    
                 </div>
             </div>
         </div>
     </div>
-<<<<<<< HEAD
-    <p id="logout" onclick="logout()" style="cursor: pointer">
-        logout</p>
-=======
 
-    <p id = "logout" onclick="logout()">logout</p>
+    <p id = "logout" onclick="logout()" style="cursor:pointer">logout</p>
 
 
->>>>>>> parent of 47b6fb6... update
     <div id="loginContainer">
     </div>
     <div class="container landingpage">
@@ -94,22 +92,21 @@
             </div>
             <div id="menu1" class="tab-pane fade">
                 <!-----------------------------------upload content goes here------------------>
-                <form action="" method="post" enctype="multipart/form-data" name="frmeditSubmitForm5"
-                id="frmeditSubmitForm5">
+                <form action="" method="post" enctype="multipart/form-data"
+                name="frmeditSubmitForm5" id="frmeditSubmitForm5">
                 <div>
                     <br />
                     <label for="myFileUpload5">
                         You may use this form to upload pdf (Adobe Acrobat) resources to your document library.
-                        Select the pdf by clicking on the 'Choose File' Button. Give the pdf a user friendly
-                        name. It should be lowercase with no spaces. Then click 'Submit to upload your pdf
-                        file to the library.
+                        Select the pdf by clicking on the 'Choose File' Button. Give the pdf a
+                        user friendly name. It should be lowercase with no spaces. Then click 'Submit to upload
+                        your pdf file to the library. 
                     </label>
                     <br />
                     <input type="file" id="myFileUpload5" accept="application/pdf" name="myFileUpload5">
                     <br />
                     <label>
-                        Give a name to your pdf (lowercase, no spaces ex: my_new_pdf). Refer to the pdf
-                        in the page editor by using this template: [Template goes here]<br>
+                        Give a name to your pdf (lowercase, no spaces ex: my_new_pdf). Refer to the pdf in the page editor by using this template: [Template goes here]<br>
                         <input type="text" name="uploadFilename5" id="uploadFilenameEdit5">
                     </label>
                 </div>
@@ -132,6 +129,7 @@
     <footer class="container-fluid text-center landingfooter">
       <p>Aon</p>
     </footer>
+
     <script>
 
 
@@ -180,7 +178,7 @@
 
             $("#dialog").dialog("close");
 
-            platform = Gitana.connect(config, function (err) {
+            Gitana.connect(config, function (err) {
                 if (err) {
                     console.log("Error: " + err + window.location.href);
                     //$("#loading-image").css('display', 'none');
@@ -191,19 +189,23 @@
 
                 }
             }).then(function () {
+            platform = this;
                 document.cookie = "username=" + username;
                 document.cookie = "password=" + password;
 
-                repository = this.readRepository(repositoryId).then(function () {
+                this.readRepository(repositoryId).then(function () {
+                repository = this;
 
-                    branch = this.readBranch(branchId).then(function () {
+
+                    this.readBranch(branchId).then(function () {
+                    branch = this;
                     /*
                             node = this.readNode(pageIdToLoad).then(function () {
                                 callback && callback();
 
                             });
                         
-*/
+                        */
 
                     });
                 });
@@ -211,7 +213,7 @@
         }
 
         var myData = {
-            "0fb318d0041cb9bd0a13": "test",
+            /*"0fb318d0041cb9bd0a13": "test",*/
             "5c5fb3b173fbb1185b4d": "medical",
             "1797d83ab34843aa7ab9": "medical-hmo",
             "52bbfd6e6174e9ca77f7": "credit-union",
@@ -230,11 +232,11 @@
             "e5a18ae298b211790f7e": "workflex",
             "a80289b42b88610a7651": "voluntary",
             "4b948eecd3345ced09bc": "vision",
-            "252be9349d6efd0312d4": "new_hires",
-            "4423e1a7828ae0da1ba9": "myResources",
+            /*"252be9349d6efd0312d4": "new_hires",*/
+            /*"4423e1a7828ae0da1ba9": "myResources",*/
             "21f5c2a082ab59f6391b": "401k-plan",
             "67a22456135d7668e21a": "fsa-hsa",
-            "0ff355a9f5e994f836bc": "modern-family"
+            /*"0ff355a9f5e994f836bc": "modern-family"*/
         }
 
         $("#myDropdown").alpaca({
@@ -272,22 +274,21 @@
                     "title": "Edit Page",
                     "type": "object",
                     "properties": {
-                        "name": {
+                        /*"name": {
                             "type": "string",
                             "title": "Page Name"
-                        },
+                        },*/
                         "body": {
                             "type": "string",
                             "title": "Main Body"
                         },
-                        "leftImage": {
+                        /*"leftImage": {
                             "type": "string",
                             "title": "Left Sidebar Image URL"
-                        },
+                        },*/
                         "links": {
                             "type": "array",
                             "title": "Helpful Links",
-                            "maxItems": 6,
                             "items": {
                                 "properties": {
                                     "company": {
@@ -318,7 +319,18 @@
                                     "link": {
                                         "type": "string",
                                         "title": "link"
-                                    }
+                                    },
+                                    "bullets": {
+                        "items": {
+                            "type": "string",
+                            "title": "bulletItem"
+                        },
+                        "type": "array",
+                        "title": "bullets"
+                    }
+
+
+
                                 },
                                 "type": "object"
                             }
@@ -359,11 +371,11 @@
                                     node.heading = value.heading;
                                     node.body = value.body;
                                     node.leftImage = value.leftImage;
-                                    node.links = value.links;
+                                    node.links = JSON.parse($.encoder.encodeForHTML(JSON.stringify(value.links)));
                                     node.accordionSection1Header = value.accordionSection1Header;
-                                    node.iWantTo = value.iWantTo;
+                                    node.iWantTo = JSON.parse($.encoder.encodeForHTML(JSON.stringify(value.iWantTo)));
                                     node.accordionSection2Header = value.accordionSection2Header;
-                                    node.iWantTo2 = value.iWantTo2;
+                                    node.iWantTo2 = JSON.parse($.encoder.encodeForHTML(JSON.stringify(value.iWantTo2)));
                                     node.update().then(function(){alert("Form Submitted")});
                                 }
                             }
@@ -417,6 +429,22 @@
 
 
         function checkCookie() {
+
+        if(performance.navigation.type  == 1 )
+          {
+            console.log('page reloaded');
+            Gitana.deleteCookie("password","/secure-bsc-admin");
+            Gitana.deleteCookie("username","/secure-bsc-admin");
+            Gitana.deleteCookie("password","/localhost");
+            Gitana.deleteCookie("username","/localhost");
+            Gitana.deleteCookie("password","/");
+            Gitana.deleteCookie("username","/");
+
+          }
+
+
+
+
             console.log('checking cookies');
             var user = getCookie("username");
             var pswd = getCookie("password");
@@ -462,37 +490,22 @@
 
 
         function logout() {
-            Gitana.deleteCookie(password,'/')
-            
+            Gitana.deleteCookie("password","/secure-bsc-admin");
+            Gitana.deleteCookie("username","/secure-bsc-admin");
+            Gitana.deleteCookie("password","/localhost");
+            Gitana.deleteCookie("username","/localhost");
+            Gitana.deleteCookie("password","/");
+            Gitana.deleteCookie("username","/");
+
+            platform.logout();
+            open("alpaca2Copy.html","_self");
         }
 
-<<<<<<< HEAD
-
-        /*restrick file upload to pdf*/
-
-        var fl = document.getElementById('myFileUpload5');
-
-fl.onchange = function(e){ 
-    var ext = this.value.match(/\.(.+)$/)[1];
-    switch(ext)
-    {
-        case 'pdf':
-            console.log('file type allowed');
-            break;
-        default:
-            alert('Only pdf files may be uploaded');
-            this.value='';
-    }
-};
-
-
-
-
     </script>
+
     <script src="js/Class.create.js" type="text/javascript"></script>
     <script src="js/jquery-encoder-0.1.0.js" type="text/javascript"></script>
-=======
-    </script>
->>>>>>> parent of 47b6fb6... update
+
+
 </body>
 </html>
