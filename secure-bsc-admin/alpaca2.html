@@ -232,8 +232,8 @@
             "e5a18ae298b211790f7e": "workflex",
             "a80289b42b88610a7651": "voluntary",
             "4b948eecd3345ced09bc": "vision",
-            /*"252be9349d6efd0312d4": "new_hires",*/
-            /*"4423e1a7828ae0da1ba9": "myResources",*/
+            "252be9349d6efd0312d4": "new_hires",
+            "89d455783efde8f39be7": "myResources",
             "21f5c2a082ab59f6391b": "401k-plan",
             "67a22456135d7668e21a": "fsa-hsa",
             /*"0ff355a9f5e994f836bc": "modern-family"*/
@@ -371,11 +371,14 @@
                                     node.heading = value.heading;
                                     node.body = value.body;
                                     node.leftImage = value.leftImage;
-                                    node.links = JSON.parse($.encoder.encodeForHTML(JSON.stringify(value.links)));
+                                    //node.links = JSON.parse($.encoder.encodeForHTML(JSON.stringify(value.links)));
+                                    node.links = value.links;
                                     node.accordionSection1Header = value.accordionSection1Header;
-                                    node.iWantTo = JSON.parse($.encoder.encodeForHTML(JSON.stringify(value.iWantTo)));
+                                    //node.iWantTo = JSON.parse($.encoder.encodeForHTML(JSON.stringify(value.iWantTo)));                             
+                                    node.iWantTo = value.iWantTo;
                                     node.accordionSection2Header = value.accordionSection2Header;
-                                    node.iWantTo2 = JSON.parse($.encoder.encodeForHTML(JSON.stringify(value.iWantTo2)));
+                                    //node.iWantTo2 = JSON.parse($.encoder.encodeForHTML(JSON.stringify(value.iWantTo2)));
+                                    node.iWantTo2 = value.iWantTo2;
                                     node.update().then(function(){alert("Form Submitted")});
                                 }
                             }
