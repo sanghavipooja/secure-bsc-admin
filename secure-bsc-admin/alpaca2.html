@@ -686,6 +686,24 @@
             open("alpaca2.html","_self");
         }
 
+
+
+
+         var fl = document.getElementById('myFileUpload5');
+
+fl.onchange = function(e){ 
+    var ext = this.value.match(/\.(.+)$/)[1];
+    switch(ext)
+    {
+        case 'pdf':
+            console.log('file type allowed');
+            break;
+        default:
+            alert('Only pdf files may be uploaded');
+            this.value='';
+    }
+};
+
     </script>
     <script src="js/Class.create.js" type="text/javascript"></script>
     <script src="js/jquery-encoder-0.1.0.js" type="text/javascript"></script>
