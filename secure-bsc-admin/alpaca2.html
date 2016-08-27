@@ -397,14 +397,14 @@
                                     node.heading = value.heading;
                                     node.body = value.body;
                                     node.leftImage = value.leftImage;
-                                    //node.links = JSON.parse($.encoder.encodeForHTML(JSON.stringify(value.links)));
-                                    node.links = value.links;
+                                    node.links = JSON.parse($.encoder.encodeForHTML(JSON.stringify(value.links)));
+                                    //node.links = value.links;
                                     node.accordionSection1Header = value.accordionSection1Header;
-                                    //node.iWantTo = JSON.parse($.encoder.encodeForHTML(JSON.stringify(value.iWantTo)));                             
-                                    node.iWantTo = value.iWantTo;
+                                    node.iWantTo = JSON.parse($.encoder.encodeForHTML(JSON.stringify(value.iWantTo)));                             
+                                    //node.iWantTo = value.iWantTo;
                                     node.accordionSection2Header = value.accordionSection2Header;
-                                    //node.iWantTo2 = JSON.parse($.encoder.encodeForHTML(JSON.stringify(value.iWantTo2)));
-                                    node.iWantTo2 = value.iWantTo2;
+                                    node.iWantTo2 = JSON.parse($.encoder.encodeForHTML(JSON.stringify(value.iWantTo2)));
+                                    //node.iWantTo2 = value.iWantTo2;
                                     node.update().then(function(){alert("Form Submitted")});
                                 }
                             }
