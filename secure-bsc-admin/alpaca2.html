@@ -101,9 +101,11 @@
                     <input type="file" id="myFileUpload5" accept="application/pdf" name="myFileUpload5">
                     <br />
                     <label>
-                        Give a name to your pdf (lowercase, no spaces ex: my_new_pdf). Refer to the pdf
-                        in the page editor by using this template: [Template goes here]<br>
-                        <input type="text" name="uploadFilename5" id="uploadFilenameEdit5">
+                        Give a name to your pdf (lowercase, no spaces ex: <span style="background-color:Yellow">my_new_pdf</span>).<br />
+                        <input type="text" name="uploadFilename5" id="uploadFilenameEdit5"><br /><br />
+                         To create a link to the pdf
+                        in the page editor by using this template: 
+                        <br />https://api.cloudcms.com/repositories/e083f23fc5141afe5d22/branches/fcf1c3fb882fd40ecf97/nodes/f2585ff41013540945ab/attachments/<span style="background-color:Yellow">my_new_pdf</span>/<br>
                     </label>
                 </div>
                 <div>
@@ -397,14 +399,14 @@
                                     node.heading = value.heading;
                                     node.body = value.body;
                                     node.leftImage = value.leftImage;
-                                    node.links = JSON.parse($.encoder.encodeForHTML(JSON.stringify(value.links)));
-                                    //node.links = value.links;
+                                    //node.links = JSON.parse($.encoder.encodeForHTML(JSON.stringify(value.links)));
+                                    node.links = value.links;
                                     node.accordionSection1Header = value.accordionSection1Header;
-                                    node.iWantTo = JSON.parse($.encoder.encodeForHTML(JSON.stringify(value.iWantTo)));                             
-                                    //node.iWantTo = value.iWantTo;
+                                    //node.iWantTo = JSON.parse($.encoder.encodeForHTML(JSON.stringify(value.iWantTo)));                             
+                                    node.iWantTo = value.iWantTo;
                                     node.accordionSection2Header = value.accordionSection2Header;
-                                    node.iWantTo2 = JSON.parse($.encoder.encodeForHTML(JSON.stringify(value.iWantTo2)));
-                                    //node.iWantTo2 = value.iWantTo2;
+                                    //node.iWantTo2 = JSON.parse($.encoder.encodeForHTML(JSON.stringify(value.iWantTo2)));
+                                    node.iWantTo2 = value.iWantTo2;
                                     node.update().then(function(){alert("Form Submitted")});
                                 }
                             }
