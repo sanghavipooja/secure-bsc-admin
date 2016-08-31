@@ -105,7 +105,7 @@
                         <input type="text" name="uploadFilename5" id="uploadFilenameEdit5"><br /><br />
                          To create a link to the pdf
                         in the page editor by using this template: 
-                        <br />https://api.cloudcms.com/repositories/e083f23fc5141afe5d22/branches/fcf1c3fb882fd40ecf97/nodes/f2585ff41013540945ab/attachments/<span style="background-color:Yellow">my_new_pdf</span>/<br>
+                        <br />https://api.cloudcms.com/repositories/e083f23fc5141afe5d22/branches/fcf1c3fb882fd40ecf97/nodes/f2585ff41013540945ab/attachments/<span id="myFileName"></span>/<br>
                     </label>
                 </div>
                 <div>
@@ -735,6 +735,20 @@ fl.onchange = function(e){
 };
 
     </script>
+
+    <script>
+        $("#uploadFilenameEdit5").on('change keyup paste mouseup', function () {
+            $("#myFileName").html($("#uploadFilenameEdit5").val());
+        });
+    
+    
+    
+    </script>
+
+
+
+
+
     <script src="js/Class.create.js" type="text/javascript"></script>
     <script src="js/jquery-encoder-0.1.0.js" type="text/javascript"></script>
 </body>
