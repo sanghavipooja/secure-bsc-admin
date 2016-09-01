@@ -113,9 +113,15 @@
                 </form>
                 <script>
                     $("#frmeditSubmitForm5").submit(function (event) {
-                        alert('Resource Uploaded');
+
                         event.preventDefault(); // Prevent the form from submitting via the browser.
-                        submitForm();
+                        try {
+                            submitForm();
+                            alert('Resource Uploaded');
+                        }
+                        catch (err) {
+                            alert("Form was not uploaded. Please verify your upload and try again");
+                        }
                     });   
                 </script>
                 <!------------------------upload content ends here------------------------>
@@ -622,6 +628,11 @@
         //This is form upload scripting here--------------------------------------------
         var pdfContainerId = 'f2585ff41013540945ab';
         function submitForm() {
+
+        if ($("uploadFilenameEdit5").val() == "") {
+        alert("upload failed");
+        return false;
+        }
             var formData = new FormData($("#frmeditSubmitForm5")[0]);
 
             var authorizationHeader = platform.getDriver().getHttpHeaders()["Authorization"];
