@@ -582,8 +582,6 @@
                                     console.log("Timer Set");
 
                                     var value = this.getValue();
-
-
                                     node.generalBenefits = value.generalBenefits;
                                     node.consumerism = value.consumerism;
                                     node.communications = value.communications;
@@ -622,7 +620,14 @@
         //This is form upload scripting here--------------------------------------------
         var pdfContainerId = 'f2585ff41013540945ab';
         function submitForm() {
-            var formData = new FormData($("#frmeditSubmitForm5")[0]);
+
+        if (hasUpperCase($("#uploadFilenameEdit5").val())) {
+        alert("Lower case characters only please");
+        return;
+
+        } else {
+
+        var formData = new FormData($("#frmeditSubmitForm5")[0]);
 
             var authorizationHeader = platform.getDriver().getHttpHeaders()["Authorization"];
             var form = $("#frmeditSubmitForm5");
@@ -637,6 +642,13 @@
                     authorization: authorizationHeader
                 }
             });
+
+
+        }
+                                    
+
+
+            
         }
 
         //This ends form upload scripting-----------------------------------------------
@@ -743,10 +755,13 @@ fl.onchange = function(e){
 
     <script>
         $("#uploadFilenameEdit5").on('change keyup paste mouseup', function () {
+            
             $("#myFileName").html($("#uploadFilenameEdit5").val());
         });
-    
-    
+
+        function hasUpperCase(str) {
+            return (/[A-Z]/.test(str));
+        }
     
     </script>
 
