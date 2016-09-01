@@ -76,7 +76,7 @@
         <!-- tabbed area------------------>
         <ul class="nav nav-tabs">
             <li class="active"><a data-toggle="tab" href="#home">Edit Page</a></li>
-            <li><a data-toggle="tab" href="#menu1">Manage PDF's</a></li>
+            <li><a data-toggle="tab" href="#menu1">Manage File Upload</a></li>
         </ul>
         <div class="tab-content">
             <div id="home" class="tab-pane fade in active">
@@ -92,19 +92,18 @@
                 <div>
                     <br />
                     <label for="myFileUpload5">
-                        You may use this form to upload pdf (Adobe Acrobat) resources to your document library.
-                        Select the pdf by clicking on the 'Choose File' Button. Give the pdf a user friendly
-                        name. It should be lowercase with no spaces. Then click 'Submit to upload your pdf
-                        file to the library.
+                        You may use this form to upload pdf (Adobe Acrobat) or xls/xlsx (Microsoft Excel) resources to your document library.
+                        Select the file by clicking on the 'Choose File' Button. Give the file a user friendly
+                        name. It should be lowercase with no spaces. Then click 'Submit to upload your file to the library.
                     </label>
                     <br />
-                    <input type="file" id="myFileUpload5" accept="application/pdf" name="myFileUpload5">
+                    <input type="file" id="myFileUpload5" accept="application/pdf,application/vnd.ms-excel" name="myFileUpload5">
                     <br />
                     <label>
-                        Give a name to your pdf (lowercase, no spaces ex: <span style="background-color:Yellow">my_new_pdf</span>).<br />
+                        Give a name to your file (lowercase, no spaces ex: <span style="background-color:Yellow">my_new_file</span>).<br />
                         <input type="text" name="uploadFilename5" id="uploadFilenameEdit5"><br /><br />
-                         To create a link to the pdf
-                        in the page editor copy/paste this link into the link field: 
+                         To create a link to the file
+                        in the page editor copy/paste this customized link into the link field: 
                         <br />https://api.cloudcms.com/repositories/e083f23fc5141afe5d22/branches/fcf1c3fb882fd40ecf97/nodes/f2585ff41013540945ab/attachments/<span id="myFileName"></span>/<br>
                     </label>
                 </div>
@@ -726,10 +725,16 @@ fl.onchange = function(e){
     switch(ext)
     {
         case 'pdf':
-            console.log('file type allowed');
+            console.log('pdf file type allowed');
+            break;
+            case 'xls':
+            console.log('xls file type allowed');
+            break;
+            case 'xlsx':
+            console.log('xlsx file type allowed');
             break;
         default:
-            alert('Only pdf files may be uploaded');
+            alert('Only pdf or xls/xlsx files may be uploaded');
             this.value='';
     }
 };
