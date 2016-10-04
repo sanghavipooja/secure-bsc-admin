@@ -231,6 +231,7 @@
         "b883c2dca4f15f11019f": "life-accident",
         "ee95b728317147bb79d6": "employee-asst",
         "f5be44d832f9e77d6e85": "leave-absence",
+        "7b5c1d7200327b2be55a": "index",
         "b073cb57ee6187722d75": "educational-asst",
         "614e4f07b7874ccb7a08": "maternity-resources",
         "b825e1ee2d42b2767c35": "adoption-asst",
@@ -292,12 +293,83 @@
             showResourcesForm();
           } else if (pageIdToLoad == "a3b3f7b9777c2b17d8fe") {
           showEnrollmentForm();
+          } else if (pageIdToLoad == "7b5c1d7200327b2be55a") {
+              showHomepageForm();
           } else {
             showForm();
           }
 
         });
       }
+
+
+
+
+      function showHomepageForm() {
+
+          console.log("show homepage form");
+          $("#myform").html("");
+          $("#myform").alpaca({
+              "view": "bootstrap-edit",
+              "data": node,
+              "schema": {
+                  "title": "homePage",
+                  "description": "A data type to support the home page.",
+                  "type": "object",
+                  "properties": {
+                      "name": {
+                          "type": "string",
+                          "title": "name",
+                          "readonly": false,
+                          "disallow": []
+                      },
+                      "tile1": {
+                          "type": "string",
+                          "title": "tile1",
+                          "readonly": false,
+                          "disallow": []
+                      }
+                  },
+                  "_parent": "n:node",
+                  "$schema": "http://json-schema.org/draft-04/schema#",
+                  "items": {}
+              },
+              "options": {
+                  "form": {
+                      "buttons": {
+                          "submit": {
+                              "click": function () {
+                                  clearTimer();
+                                  console.log("Timer Cleared");
+                                  setTimer();
+                                  console.log("Timer Set");
+
+                                  var value = this.getValue();
+                                  //alert(JSON.stringify(value, null, "  "));
+                                  node.name = value.name;
+                                  node.tile1 = value.tile1;
+                                  node.update().then(function () {
+                                      alert("Form Submitted")
+                                  });
+                              }
+                          }
+                      }
+                  },
+                  "title": "newPageTitle",
+                  "engineId": "alpaca1",
+                  "fields": {
+                      "name": {
+                          "type": "text"
+                      },
+                      "tile1": {
+                          "type": "ckeditor"
+                      }
+                  }
+              }
+          });
+      }
+
+
 
 
       function showForm() {
@@ -436,6 +508,10 @@
         });
 
       } //alpaca   
+
+
+
+
 
       function showResourcesForm() {
         $("#myform").html("");
