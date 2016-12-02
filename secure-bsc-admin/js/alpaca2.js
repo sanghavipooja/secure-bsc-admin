@@ -101,7 +101,7 @@ var myData = {
     "89d455783efde8f39be7": "myResources",
     "21f5c2a082ab59f6391b": "401k-plan",
     "67a22456135d7668e21a": "fsa-hsa",
-    /*"0ff355a9f5e994f836bc": "modern-family"*/
+    /*"5c082fcd876af82531a0": "modern_family"*/
 }
 
 $("#myDropdown").alpaca({
@@ -153,7 +153,9 @@ function reShowForm() {
             showEnrollmentForm();
         } else if (pageIdToLoad == "7b5c1d7200327b2be55a") {
             showHomepageForm();
-        } else {
+        } else if (pageIdToLoad == "5c082fcd876af82531a0") {//MF
+            showMFForm();
+        }else {
             showForm();
         }
 
@@ -221,6 +223,141 @@ function showHomepageForm() {
                 },
                 "tile1": {
                     "type": "ckeditor"
+                }
+            }
+        }
+    });
+}
+
+//This function is ready to be implimented when we show modern family
+function showMFForm() {
+
+    console.log("show modern family form");
+    $("#myform").html("");
+    $("#myform").alpaca({
+        "view": "bootstrap-edit",
+        "data": node,
+        "schema": {
+    "title": "newMF",
+    "type": "object",
+    "properties": {
+        "name": {
+            "type": "string",
+            "title": "name"
+        },
+        "accordions": {
+            "type": "array",
+            "title": "accordions",
+            "items": {
+                "type": "object",
+                "title": "accordionItem",
+                "properties": {
+                    "accordionName": {
+                        "type": "string",
+                        "title": "Name"
+                    },
+                    "headerText": {
+                        "type": "string",
+                        "title": "Header Text"
+                    },
+                    "items": {
+                        "type": "array",
+                        "title": "Upper Accordion Items",
+                        "items": {
+                            "type": "object",
+                            "title": "Item",
+                            "properties": {
+                                "name": {
+                                    "type": "string",
+                                    "title": "Item Name"
+                                },
+                                "link": {
+                                    "type": "string",
+                                    "title": "item Link Url"
+                                },
+                                "description": {
+                                    "type": "string",
+                                    "title": "Item Description"
+                                }
+                            }
+                        }
+                    },
+                    "subAccordions": {
+                        "type": "array",
+                        "title": "subaccordions",
+                        "items": {
+                            "type": "object",
+                            "title": "subaccordion",
+                            "properties": {
+                                "subAccordionName": {
+                                    "type": "string",
+                                    "title": "Sub Accordion Name"
+                                },
+                                "items": {
+                                    "type": "array",
+                                    "title": "Sub Accordion Items",
+                                    "items": {
+                                        "type": "object",
+                                        "title": "Item",
+                                        "properties": {
+                                            "name": {
+                                                "type": "string",
+                                                "title": "Item Name"
+                                            },
+                                            "link": {
+                                                "type": "string",
+                                                "title": "item Link Url"
+                                            },
+                                            "description": {
+                                                "type": "string",
+                                                "title": "Item Description"
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    },
+    "_parent": "n:node",
+    "items": {},
+    "description": "custom:newmf0",
+    "$schema": "http://json-schema.org/draft-04/schema#"
+},
+        "options": {
+            "form": {
+                "buttons": {
+                    "submit": {
+                        "click": function () {
+                            clearTimer();
+                            console.log("Timer Cleared");
+                            setTimer();
+                            console.log("Timer Set");
+
+                            var value = this.getValue();
+                            //alert(JSON.stringify(value, null, "  "));
+                            node.name = value.name;
+                            node.accordions = value.accordions;
+                            node.update().then(function () {
+                                alert("Form Submitted")
+                            });
+                        }
+                    }
+                }
+            },
+            "title": "newPageTitle",
+            "engineId": "alpaca1",
+            "fields": {
+                "name": {
+                    "type": "text"
+                },
+                "accordions": {
+                    "options": {
+                        "actionBarType": "right"
+                    }
                 }
             }
         }
