@@ -94,7 +94,7 @@ var myData = {
     "614e4f07b7874ccb7a08": "maternity-resources",
     "b825e1ee2d42b2767c35": "adoption-asst",
     "e5a18ae298b211790f7e": "workflex",
-    "a3b3f7b9777c2b17d8fe": "open_enrollment",
+   // "a3b3f7b9777c2b17d8fe": "open_enrollment",
     "a80289b42b88610a7651": "voluntary",
     "4b948eecd3345ced09bc": "vision",
     "252be9349d6efd0312d4": "new_hires",
@@ -245,6 +245,14 @@ function showMFForm() {
             "type": "string",
             "title": "name"
         },
+        "callout1": {
+            "type": "string",
+            "title": "callout1"
+        },
+        "callout2": {
+            "type": "string",
+            "title": "callout2"
+        },
         "accordions": {
             "type": "array",
             "title": "accordions",
@@ -353,6 +361,12 @@ function showMFForm() {
             "fields": {
                 "name": {
                     "type": "text"
+                },
+                "callout1": {
+                    "type": "ckeditor"                     
+                },
+                "callout2": {
+                    "type": "ckeditor"                    
                 },
                 "accordions": {
                     "options": {
@@ -994,6 +1008,13 @@ function submitForm() {
         processData: false,
         headers: {
             authorization: authorizationHeader
+        },
+        success: function (response) {
+            //success process here
+            var txt = $("#uploadFilenameEdit5").val();
+            $("#lnk").html('https://f2472b6e-e1f1-4c52-9eed-f7797ff8e908-hosted.cloudcms.net/static/test.pdf?repository=e083f23fc5141afe5d22&branch=fcf1c3fb882fd40ecf97&node=f2585ff41013540945ab&attachment=' + txt);
+            $("#cpy_element").css('display', 'block');
+
         }
     });
 }
@@ -1101,5 +1122,17 @@ fl.onchange = function(e) {
 
 $("#uploadFilenameEdit5").on('change keyup paste mouseup', function() {
     $("#myFileName").html($("#uploadFilenameEdit5").val());
+    var tx = "https://3e87873b-2f33-4a70-8478-8a480f81553e-hosted.cloudcms.net/static/test.pdf?repository=f2c3571d7a2955e7f8a1&branch=7935c19b649b9c399528&node=fd1f6aafd2b6e54d0c71&attachment=";
+    $("#lnk1").html(tx + $("#uploadFilenameEdit5").val());
 });
 
+
+function copyToClipboard(element) {
+    if ($("#uploadFilenameEdit5").val() !== "") {
+        var $temp = $("<input>");
+        $("body").append($temp);
+        $temp.val($(element).text()).select();
+        document.execCommand("copy");
+        $temp.remove();
+    }
+}

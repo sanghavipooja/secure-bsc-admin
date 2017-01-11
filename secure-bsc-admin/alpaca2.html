@@ -40,6 +40,13 @@
         {
             color: Blue;
         }
+         #cpy_element {
+            display:none;
+        }
+        textarea#lnk,textarea#lnk1 {
+            width: 30em;
+            height: 7em;
+        }
     </style>
     <link href="css/jquery-ui.css" rel="stylesheet" type="text/css" />
     <script src="js/jquery-ui.min.js" type="text/javascript"></script>
@@ -112,18 +119,33 @@
                         <input type="text" name="uploadFilename5" id="uploadFilenameEdit5">
                         <br />
                         <br />
-                        To create a link to the file in the page editor copy/paste this customized link
-                        into the link field:
+                      
                         <br />
                         <!--https://api.cloudcms.com/repositories/e083f23fc5141afe5d22/branches/fcf1c3fb882fd40ecf97/nodes/f2585ff41013540945ab/attachments/
                         <span id="myFileName"></span>/-->
 
-                        <nobr>https://f2472b6e-e1f1-4c52-9eed-f7797ff8e908-hosted.cloudcms.net/static/test.pdf?repository=e083f23fc5141afe5d22&branch=fcf1c3fb882fd40ecf97&node=f2585ff41013540945ab&attachment=<span id="myFileName"></span> </nobr>
+                      <!--  <nobr>
+                          <!--https://f2472b6e-e1f1-4c52-9eed-f7797ff8e908-hosted.cloudcms.net/static/test.pdf?repository=e083f23fc5141afe5d22&branch=fcf1c3fb882fd40ecf97&node=f2585ff41013540945ab&attachment=<span id="myFileName"></span> </nobr>-->
                         <br>
                     </label>
+                     <p id="p1" style="display:none">
+                             https://f2472b6e-e1f1-4c52-9eed-f7797ff8e908-hosted.cloudcms.net/static/test.pdf?repository=e083f23fc5141afe5d22&branch=fcf1c3fb882fd40ecf97&node=f2585ff41013540945ab&attachment=<span id="Span1"></span> 
+                         </p>
                 </div>
                 <div>
                     <input id="mySubmitButton" name="mySubmit" type="submit" value="Submit">
+                     <div id="cpy_element">
+                        <br/>
+                    <p><strong> To create a link to the file in the page editor click on copy and paste this customized link
+                    into the link field:</strong></p> 
+                        <textarea id="lnk" readonly></textarea><br/>
+                    <input type="button" onclick="copyToClipboard('#p1')" value="Copy Link" id="cpy">
+                    </div>
+                      <div><br/>
+                         <p><strong> To create a link to the file in the page editor click on copy and paste this customized link
+                        into the link field:</strong></p>
+                      <textarea id="lnk1" readonly></textarea><br/>
+                    </div>
                 </div>
                 </form>
                 <script>
